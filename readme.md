@@ -10,3 +10,72 @@ Orchid is a free [Laravel](https://laravel.com) package that abstracts standard 
 ## License
 
 Orchid is covered by the MIT license. Check [the license](LICENSE) for further information.
+
+
+## Install
+
+- Create project
+
+```
+composer create-project laravel/laravel my-awesome-admin
+```
+
+- Configure `.env`
+
+- Install main admin package
+
+```
+composer require divotek/admin
+```
+
+- Publish package config & assets
+
+```
+php artisan admin:install
+
+php artisan elfinder:publish
+```
+
+- Configure main admin credentials
+
+```
+php artisan admin:make
+```
+
+## Local Development
+
+- Download source code
+
+- Extract archive
+
+- Make your magic in extracted directory
+
+- Build frontend for modified admin panel:
+
+```
+npm i & npm run production
+```
+
+- Edit your project `composer.json` and add/modify the following directives:
+
+```
+"require": {
+    "divotek/admin": "dev-main",
+    ...
+},
+"repositories": [
+    {
+        "type": "path",
+        "url": "../path/to/extracted/directory"
+    },
+    ...
+]
+```
+
+- In your project directory remove `vendor` dir and `composer.lock` file
+
+- Run following command:
+
+```
+composer install
+```

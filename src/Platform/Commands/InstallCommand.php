@@ -17,7 +17,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'orchid:install';
+    protected $signature = 'admin:install';
 
     /**
      * The console command description.
