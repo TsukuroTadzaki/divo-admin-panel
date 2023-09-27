@@ -13,7 +13,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'orchid:publish';
+    protected $signature = 'admin:publish';
 
     /**
      * The console command description.

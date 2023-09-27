@@ -53,7 +53,7 @@ class InstallCommand extends Command
             ->showMeLove();
 
         $this->info('Completed!');
-        $this->comment("To create a user, run 'artisan orchid:admin'");
+        $this->comment("To create a user, run 'artisan admin:make'");
         $this->line("To start the embedded server, run 'artisan serve'");
 
         event(new InstallEvent($this));

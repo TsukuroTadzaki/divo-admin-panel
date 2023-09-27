@@ -7,11 +7,6 @@
 
 Orchid is a free [Laravel](https://laravel.com) package that abstracts standard business logic and allows code-driven rapid application development of back-office applications, admin/user panels, and dashboards.
 
-## License
-
-Orchid is covered by the MIT license. Check [the license](LICENSE) for further information.
-
-
 ## Install
 
 - Create project
