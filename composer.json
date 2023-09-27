@@ -1,0 +1,91 @@
+{
+    "name": "divotek/admin",
+    "description": "Platform for back-office applications, admin panel or CMS your Laravel app.",
+    "keywords": [
+        "framework",
+        "laravel",
+        "platform",
+        "panel",
+        "admin",
+        "cmf",
+        "cms",
+        "rad",
+        "extranet"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://divotek.com.ua",
+    "authors": [
+        {
+            "name": "Konstantin Sivenkov",
+            "email": "sviniabanditka@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "barryvdh/laravel-elfinder": "^0.5.2",
+        "intervention/image": "^2.7",
+        "laravel/framework": "^10.0",
+        "laravel/scout": "^9.0 || ^10.0",
+        "orchid/blade-icons": "^4.0",
+        "tabuna/breadcrumbs": "^4.0",
+        "twbs/bootstrap-icons": "^1.10",
+        "watson/active": "^7.0"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^2.10 || ^3.0",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.2",
+        "orchestra/testbench-core": "^8.0",
+        "orchestra/testbench-dusk": "^8.0",
+        "phpunit/php-code-coverage": "^10.0",
+        "phpunit/phpunit": "^10.0",
+        "vimeo/psalm": "^4.3 || ^5.0"
+    },
+    "conflict": {
+        "laravel/framework": "<10.2.0",
+        "nesbot/carbon": "<2.66.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Orchid\\Access\\": "src/Access/",
+            "Orchid\\Alert\\": "src/Alert/",
+            "Orchid\\Attachment\\": "src/Attachment/",
+            "Orchid\\Filters\\": "src/Filters/",
+            "Orchid\\Metrics\\": "src/Metrics/",
+            "Orchid\\Platform\\": "src/Platform/",
+            "Orchid\\Screen\\": "src/Screen/",
+            "Orchid\\Support\\": "src/Support/",
+            "Orchid\\Icons\\": "src/Icons/",
+            "Orchid\\Exceptions\\": "src/Exceptions/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Orchid\\Platform\\Database\\Factories\\": "database/factories/",
+            "Orchid\\Platform\\Database\\Seeders\\": "database/seeders/",
+            "Orchid\\Tests\\": "tests/",
+            "App\\": "stubs/app/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Orchid\\Platform\\Providers\\FoundationServiceProvider",
+                "Orchid\\Platform\\Providers\\CKEditorServiceProvider",
+                "Barryvdh\\Elfinder\\ElfinderServiceProvider"
+            ],
+            "aliases": {
+                "Alert": "Orchid\\Support\\Facades\\Alert",
+                "Dashboard": "Orchid\\Support\\Facades\\Dashboard"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

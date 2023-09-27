@@ -1,0 +1,100 @@
+.repeater {
+
+  .loading-icon {
+    font-size: 20px;
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    display: block;
+    width: 100%;
+  }
+
+  .content {
+    .no-value-message,
+    .loading-message {
+      padding: 20px;
+      border: #ccc dashed 2px;
+      text-align: center;
+      display: none;
+    }
+
+    &.empty {
+      .no-value-message {
+        display: block;
+      }
+    }
+
+    &.loading {
+      .no-value-message {
+        display: none;
+      }
+
+      .loading-message {
+        display: block;
+      }
+
+      .card {
+        display: none;
+      }
+    }
+
+    .card {
+      margin-top: 0.40rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
+      > .card-header {
+        padding: 0.50rem 1rem;
+
+        .actions {
+          span {
+            &.action {
+              cursor: pointer;
+            }
+
+            &.badge {
+              opacity: 0.3;
+            }
+
+            &.card-handle {
+              cursor: move;
+            }
+          }
+
+          margin: 0;
+        }
+      }
+
+      > .card-body {
+        padding: 0.75rem;
+      }
+
+      &.sortable-ghost {
+        opacity: .5;
+      }
+    }
+  }
+
+
+  &-template {
+    display: none;
+  }
+  .transition {
+      transition: 0.4s;
+  }
+  .collapse-action{
+    transform: rotate3d(1, 0, 0, 180deg);
+  } 
+
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
