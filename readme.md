@@ -1,11 +1,30 @@
-<p align="center"> 
- <a href="https://orchid.software/"><img src="https://raw.githubusercontent.com/orchidsoftware/.github/e23597cffa8cbf24d47913ce903fcc7aa4a59335/web/avatars/orchid-github-splash.svg" alt="Laravel Orchid"></a>
-</p>
+<h1 align="center"> 
+ DiVoTek Admin Panel
+</h1>
 
+<p align="center"> 
+ Based on <a href="https://github.com/orchidsoftware/platform">Orchid Platform</a>.
+</p>
 
 <h4 align="center">For the full documentation, visit <a href="http://orchid.software">orchid.software</a>.</h4>
 
-Orchid is a free [Laravel](https://laravel.com) package that abstracts standard business logic and allows code-driven rapid application development of back-office applications, admin/user panels, and dashboards.
+This is a free [Laravel](https://laravel.com) package that abstracts standard business logic and allows code-driven rapid application development of back-office applications, admin/user panels, and dashboards.
+
+## Implemented features
+
+- Native support for `nakukryskin/orchid-repeater-field` 
+
+- Native support for `nakipelo/orchid-ckeditor`
+
+- Custom Command Bar with actions ('Go Back', 'Save and Leave', etc.)
+
+- Automatic nested tables (requires model relation called `children`, e.g. `$product->children`)
+
+- Custom slug fields for automatic slug generation
+
+- Native support for `barryvdh/laravel-elfinder`
+
+- Minor improvements
 
 ## Install
 
