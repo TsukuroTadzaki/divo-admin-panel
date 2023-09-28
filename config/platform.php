@@ -126,8 +126,19 @@ return [
      */
 
     'resource' => [
-        'stylesheets' => [],
-        'scripts'     => [],
+        'stylesheets' => [
+            '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
+            '/packages/barryvdh/elfinder/css/elfinder.min.css',
+            '/vendor/orchid/css/admin.css',
+        ],
+        'scripts'     => [
+            '/vendor/orchid/js/slug.js',
+            '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
+            '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js',
+            '/packages/barryvdh/elfinder/js/elfinder.min.js',
+            '/vendor/orchid/js/filepicker.js',
+            '/vendor/orchid/js/errors.js',
+        ],
     ],
 
     /*
@@ -317,5 +328,25 @@ return [
      */
 
     'provider' => \App\Orchid\PlatformProvider::class,
+
+    'activity' => [
+        'enabled'    => false,
+        'connection' => env('LOG_DB_CONNECTION', env('DB_CONNECTION', 'mysql')),
+    ],
+
+    'filemanager' => [
+        'disk' => env('DASHBOARD_FILESYSTEM_DISK', 'public'),
+        'uploadUrl' => '/upload', //include "/admin"
+        'filesUrl' => '/files', //include "/admin"
+    ],
+
+    'ckeditor' => [
+        'editorUrl' => '//cdn.ckeditor.com/4.22.1/full/ckeditor.js',
+        'options' => [
+            'filebrowserBrowseUrl' => '/admin/elfinder/ckeditor',
+            'filebrowserUploadUrl' => '/admin/upload',
+            'clipboard_handleImages' => false,
+        ]
+    ],
 
 ];

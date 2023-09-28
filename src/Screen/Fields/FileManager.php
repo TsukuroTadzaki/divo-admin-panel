@@ -24,7 +24,7 @@ class FileManager extends Field
         'allowMultiple' => 0,
         'value' => [],
         'mimes' => [],
-        'watermark' => 1,
+        'watermarkPath' => null,
     ];
 
     /**
@@ -49,9 +49,9 @@ class FileManager extends Field
     /**
      * @return $this
      */
-    public function noWatermark(): self
+    public function setWatermark(string $path): self
     {
-        $this->set('watermark', 0);
+        $this->set('watermarkPath', $path);
 
         return $this;
     }

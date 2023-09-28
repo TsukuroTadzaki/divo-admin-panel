@@ -33,5 +33,6 @@ class PublishCommand extends Command
             '--tag'   => 'orchid-assets',
             '--force' => true,
         ]);
+        $this->call('elfinder:publish');
     }
 }

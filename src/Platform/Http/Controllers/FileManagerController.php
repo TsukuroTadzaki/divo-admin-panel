@@ -10,23 +10,25 @@ class FileManagerController extends Controller
 {
     public const DISK = 'public';
 
-    public function upload(Request $request, $isWatermark = true)
+    public function upload(Request $request)
     {
         $uploadPath = $this->decode($request->input('target'));
+        $disk = config('platform.filemanager.disk', self::DISK);
         foreach ($request->file('upload') as $file) {
             if (substr($file->getMimeType(), 0, 5) == 'image') {
                 $name = pathinfo($file->getClientOriginalName())['filename'].'.webp';
-                $basePath = Storage::disk(self::DISK)->path($uploadPath);
+                $basePath = Storage::disk($disk)->path($uploadPath);
                 $path = $basePath.'/'.$name;
                 $image = Image::make($file)
                     ->encode('webp')
                     ->save($path);
 
-                if ($isWatermark && $watermark_path = app('settings')->find(app('settings')::WATERMARK)?->value) {
+                //$watermark_path = app('settings')->find(app('settings')::WATERMARK)?->value;
+                if ($request->input('watermarkPath')) {
                     if (! file_exists($basePath.'/'.'watermark')) {
                         mkdir($basePath.'/'.'watermark', 0777, true);
                     }
-                    $watermark = Image::make($watermark_path);
+                    $watermark = Image::make($request->input('watermarkPath'));
                     $watermark = $watermark->resize($image->width() * 0.3, $image->height() * 0.2);
                     Image::make($file)
                         ->insert($watermark, 'bottom-right', 10, 10)
@@ -34,7 +36,7 @@ class FileManagerController extends Controller
                         ->save($basePath.'/'.'watermark/'.$name);
                 }
             } else {
-                $file->storeAs($uploadPath, $file->getClientOriginalName(), self::DISK);
+                $file->storeAs($uploadPath, $file->getClientOriginalName(), $disk);
             }
         }
     }

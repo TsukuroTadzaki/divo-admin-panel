@@ -24,6 +24,8 @@ This is a free [Laravel](https://laravel.com) package that abstracts standard bu
 
 - Native support for `barryvdh/laravel-elfinder`
 
+- Activity Log
+
 - Minor improvements
 
 ## Install
@@ -46,8 +48,6 @@ composer require divotek/admin
 
 ```
 php artisan admin:install
-
-php artisan elfinder:publish
 ```
 
 - Configure main admin credentials

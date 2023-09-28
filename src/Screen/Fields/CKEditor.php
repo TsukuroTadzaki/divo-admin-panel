@@ -19,7 +19,7 @@ class CKEditor extends Field
 	{
 		return (new static())
 			->name($name)
-			->setOptions(config('ckeditor.options', []));
+			->setOptions(config('platform.ckeditor.options', []));
 	}
 
 	public function setOptions(array $options): CKEditor

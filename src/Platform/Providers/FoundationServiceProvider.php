@@ -110,6 +110,8 @@ class FoundationServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        require_once(__DIR__.'/../helpers.php');
+
         $this
             ->registerTranslations()
             ->registerProviders();
@@ -118,11 +120,11 @@ class FoundationServiceProvider extends ServiceProvider
 
         if (! Route::hasMacro('screen')) {
             Route::macro('screen', function ($url, $screen) {
-                /* @var Router $this */
+                /** @var Router $this */
                 $route = $this->match(['GET', 'HEAD', 'POST'], $url.'/{method?}', $screen);
-
+                
                 $route->where('method', $screen::getAvailableMethods()->implode('|'));
-
+                
                 return $route;
             });
         }

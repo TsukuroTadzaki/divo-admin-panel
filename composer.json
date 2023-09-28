@@ -50,6 +50,7 @@
     "autoload": {
         "psr-4": {
             "Orchid\\Access\\": "src/Access/",
+            "Orchid\\Activity\\": "src/Activity/",
             "Orchid\\Alert\\": "src/Alert/",
             "Orchid\\Attachment\\": "src/Attachment/",
             "Orchid\\Filters\\": "src/Filters/",
@@ -77,7 +78,7 @@
             "providers": [
                 "Orchid\\Platform\\Providers\\FoundationServiceProvider",
                 "Orchid\\Platform\\Providers\\CKEditorServiceProvider",
-                "Barryvdh\\Elfinder\\ElfinderServiceProvider"
+                "Orchid\\Platform\\Providers\\ElfinderServiceProvider"
             ],
             "aliases": {
                 "Alert": "Orchid\\Support\\Facades\\Alert",

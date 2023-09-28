@@ -32,8 +32,8 @@ Route::post('listener/{screen}/{layout}', [AsyncController::class, 'listener'])
     ->name('async.listener');
 
 
-Route::post('/upload/{watermark?}', [FileManagerController::class, 'upload'])->name('files_upload');
-Route::screen('/files', FileManagerScreen::class)->name('files');
+Route::post(config('platform.filemanager.uploadUrl'), [FileManagerController::class, 'upload'])->name('filemanager_upload');
+Route::screen(config('platform.filemanager.filesUrl'), FileManagerScreen::class)->name('filemanager');
 
 // TODO: Remove group
 Route::prefix('systems')->group(function () {

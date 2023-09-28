@@ -46,11 +46,11 @@ class InstallCommand extends Command
                     'orchid-assets',
                 ],
             ])
+            ->executeCommand('elfinder:publish')
             ->executeCommand('migrate')
             ->executeCommand('storage:link')
             ->changeUserModel()
-            ->setValueEnv('SCOUT_DRIVER')
-            ->showMeLove();
+            ->setValueEnv('SCOUT_DRIVER');
 
         $this->info('Completed!');
         $this->comment("To create a user, run 'artisan admin:make'");
@@ -123,28 +123,5 @@ class InstallCommand extends Command
         }
 
         return file_get_contents($file);
-    }
-
-    /**
-     * @return $this
-     */
-    private function showMeLove(): self
-    {
-        if (App::runningUnitTests() || ! $this->confirm('Would you like to show a little love by starting with ⭐')) {
-            return $this;
-        }
-
-        $repo = 'https://github.com/orchidsoftware/platform';
-
-        match (PHP_OS_FAMILY) {
-            'Darwin'  => exec('open '.$repo),
-            'Windows' => exec('start '.$repo),
-            'Linux'   => exec('xdg-open '.$repo),
-            default   => $this->line('You can find us at '.$repo),
-        };
-
-        $this->line('Thank you! It means a lot to us! 🙏');
-
-        return $this;
     }
 }
