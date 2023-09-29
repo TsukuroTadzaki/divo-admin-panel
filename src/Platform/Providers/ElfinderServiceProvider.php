@@ -21,14 +21,14 @@ class ElfinderServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$configPath = __DIR__ . '/../config/elfinder.php';
+		$configPath = base_path('/vendor/barryvdh/laravel-elfinder/config/elfinder.php');
 		$this->mergeConfigFrom($configPath, 'elfinder');
 		$this->publishes([$configPath => config_path('elfinder.php')], 'config');
 
 		$this->app->singleton('command.elfinder.publish', function($app)
 		{
-		$publicPath = $app['path.public'];
-				return new Console\PublishCommand($app['files'], $publicPath);
+		    $publicPath = $app['path.public'];
+            return new \Barryvdh\Elfinder\Console\PublishCommand($app['files'], $publicPath);
 		});
 		$this->commands('command.elfinder.publish');
 	}

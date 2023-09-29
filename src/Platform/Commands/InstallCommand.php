@@ -46,11 +46,14 @@ class InstallCommand extends Command
                     'orchid-assets',
                 ],
             ])
-            ->executeCommand('elfinder:publish')
             ->executeCommand('migrate')
             ->executeCommand('storage:link')
             ->changeUserModel()
             ->setValueEnv('SCOUT_DRIVER');
+
+        $this->comment('Publishing filemanager assets...');
+        $this->executeCommand('elfinder:publish');
+
 
         $this->info('Completed!');
         $this->comment("To create a user, run 'artisan admin:make'");
