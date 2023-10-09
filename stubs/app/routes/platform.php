@@ -43,9 +43,6 @@ Route::screen('profile', UserProfileScreen::class)
         ->parent('platform.index')
         ->push(__('Profile'), route('platform.profile')));
 
-// Platform -> Filemanager
-Route::screen('files', FileManagerScreen::class)->name('platform.files');
-
 // Platform > System > Users > User
 Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')

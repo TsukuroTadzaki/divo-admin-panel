@@ -19,6 +19,9 @@ Route::get('/', [IndexController::class, 'index'])
     ->name('index')
     ->breadcrumbs(fn (Trail $trail) => $trail->push(__('Home'), route('platform.index')));
 
+// Platform -> Filemanager
+Route::screen('files', FileManagerScreen::class)->name('platform.files');
+
 Route::screen('search/{query}', SearchScreen::class)
     ->name('search')
     ->breadcrumbs(fn (Trail $trail, string $query) => $trail->parent('platform.index')
