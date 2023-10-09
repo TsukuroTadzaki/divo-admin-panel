@@ -30,7 +30,7 @@
                     <small data-controller="viewport-entrance-toggle"
                            class="scroll-to-top"
                            data-viewport-entrance-toggle-class="show">
-                        <x-orchid-icon path="bs.chevron-up" class="me-2"/>
+                        <x-orchid-icon path="bs.chevron-up" class="me-2 text-white"/>
                         {{ __('Scroll to top') }}
                     </small>
                 </div>

@@ -19,9 +19,6 @@ Route::get('/', [IndexController::class, 'index'])
     ->name('index')
     ->breadcrumbs(fn (Trail $trail) => $trail->push(__('Home'), route('platform.index')));
 
-// Platform -> Filemanager
-Route::screen('files', FileManagerScreen::class)->name('platform.files');
-
 Route::screen('search/{query}', SearchScreen::class)
     ->name('search')
     ->breadcrumbs(fn (Trail $trail, string $query) => $trail->parent('platform.index')
@@ -35,8 +32,8 @@ Route::post('listener/{screen}/{layout}', [AsyncController::class, 'listener'])
     ->name('async.listener');
 
 
-Route::post(config('platform.filemanager.uploadUrl'), [FileManagerController::class, 'upload'])->name('filemanager_upload');
-Route::screen(config('platform.filemanager.filesUrl'), FileManagerScreen::class)->name('filemanager');
+Route::post(config('platform.filemanager.uploadUrl'), [FileManagerController::class, 'upload'])->name('file_upload');
+Route::screen(config('platform.filemanager.filesUrl'), FileManagerScreen::class)->name('files');
 
 // TODO: Remove group
 Route::prefix('systems')->group(function () {

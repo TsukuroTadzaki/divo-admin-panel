@@ -8,7 +8,7 @@
                     _token: '{{ csrf_token() }}'
                 },
                 url : '{{ route("elfinder.connector") }}',
-                urlUpload: '{{ route("platform.files_upload", ["watermark" => 1]) }}',
+                urlUpload: '{{ route("platform.file_upload", ["watermark" => 0]) }}',
                 rememberLastDir : false,
                 useBrowserHistory: false,
                 reloadClearHistory: true,

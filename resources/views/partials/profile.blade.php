@@ -10,17 +10,6 @@
             <span class="text-ellipsis text-muted">{{Auth::user()->presenter()->subTitle()}}</span>
         </small>
     </a>
-    <a href="#" class="nav-link p-0 d-flex align-items-center" data-bs-toggle="dropdown">
-        @if($image = Auth::user()->presenter()->image())
-            <span class="thumb-sm avatar me-3">
-                    <img src="{{$image}}" class="b">
-            </span>
-        @endif
-        <span class="d-block small">
-            <span class="text-ellipsis text-white" style="max-width: 12em;">{{Auth::user()->presenter()->title()}}</span>
-            <span class="text-muted d-block text-ellipsis">{{Auth::user()->presenter()->subTitle()}}</span>
-        </span>
-    </a>
 
     <x-orchid-notification/>
 
