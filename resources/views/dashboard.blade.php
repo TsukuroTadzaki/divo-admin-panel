@@ -15,7 +15,7 @@
             </a>
         </header>
 
-        <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal" id="headerMenuCollapse">
+        <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal" id="headerMenuCollapse1212">
 
             @include('platform::partials.search')
 

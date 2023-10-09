@@ -5,18 +5,20 @@ declare(strict_types=1);
 namespace Orchid\Platform\Providers;
 
 use Illuminate\Routing\Router;
+use Orchid\Platform\Dashboard;
+use Orchid\Translate\Translate;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
+use Orchid\Icons\IconServiceProvider;
+use Orchid\Screen\Components\Popover;
+use Orchid\Platform\Components\Stream;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
-use Orchid\Icons\IconServiceProvider;
-use Orchid\Platform\Components\Notification;
-use Orchid\Platform\Components\Stream;
-use Orchid\Platform\Dashboard;
-use Orchid\Screen\Components\Popover;
-use Tabuna\Breadcrumbs\BreadcrumbsServiceProvider;
 use Watson\Active\ActiveServiceProvider;
+use Orchid\Platform\Components\Notification;
+use Tabuna\Breadcrumbs\BreadcrumbsServiceProvider;
 
 /**
  * Class FoundationServiceProvider.
@@ -117,6 +119,13 @@ class FoundationServiceProvider extends ServiceProvider
             ->registerProviders();
 
         $this->app->singleton(Dashboard::class, static fn () => new Dashboard());
+        $this->app->bind('translates', function () {
+            return DB::table(Translate::TABLE)
+                ->where('language_id', app('lang')->getCurrentLanguageId())
+                ->select(['key', 'translate'])
+                ->pluck('translate', 'key')
+                ->toArray();
+        });
 
         if (! Route::hasMacro('screen')) {
             Route::macro('screen', function ($url, $screen) {
