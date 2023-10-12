@@ -63,7 +63,96 @@
 </div>
 
 @stack('scripts')
+<script type="text/javascript">
+    function openPicker(input_id, multiple = 0, mimes = []) {
+        let btn = document.getElementById('filemanager_btn_' + input_id);
+        if (btn) {
+            btn.style.display = 'none';
+            let url = btn.getAttribute('data-url');
+            let options = {
+                customData: {
+                    _token: '{{ csrf_token() }}',
+                    watermarkPath: '{{ $watermarkPath ?? "" }}',
+                },
+                url: '{{ route("elfinder.connector") }}',
+                urlUpload: url,
+                resizable: false,
+                ui: ['toolbar', 'tree', 'path','stat'],
+                rememberLastDir : true,
+                useBrowserHistory: false,
+                reloadClearHistory: false,
+                height: 300,
+                defaultView: 'list',
+                getFileCallback: function (files, fm) {
+                    if (Array.isArray(files)) {
+                        for(let file of files){
+                            showPreview(input_id, file.path, multiple)
+                        }
+                    } else {
+                        showPreview(input_id, files.path, multiple)
+                    }
+                    document.getElementById('filemanager_btn_' + input_id).style.display = 'flex';
+                    fm.destroy();
+                },
+                commandsOptions : {
+                    getfile : {
+                        multiple : multiple ? true : false,
+                    },
+                },
+                uiOptions : {
+                    toolbar : [
+                        ['back', 'forward'],
+                        ['home', 'up'],
+                        ['mkdir', 'mkfile', 'upload'],
+                        ['open', 'download', 'getfile'],
+                        ['info'],
+                        ['copy', 'cut', 'paste'],
+                        ['rm'],
+                        ['duplicate', 'rename', 'edit', 'resize'],
+                        ['extract', 'archive'],
+                        ['search'],
+                        ['view']
+                    ],
+                    tree : {
+                        openRootOnLoad : true,
+                        syncTree : true
+                    },
+                    navbar : {
+                        minWidth : 150,
+                        maxWidth : 500
+                    },
+                    cwd : {
+                        oldSchool : false
+                    }
+                },
+            };
+            if (!Array.isArray(mimes)) {
+                mimes = JSON.parse(mimes);
+            }
+            if (mimes.length) {
+                options.onlyMimes = mimes;
+            }
+            var elf = $('#filepicker_' + input_id).elfinder(options).elfinder('instance');
+        }
+    }
 
+    function showPreview(input_id, path, multiple) {
+        if (!multiple) {
+            document.getElementById('inputs_' + input_id).innerHTML = '';
+        }
+        let span = document.querySelector('.empty-span');
+        if (span) {
+            span.remove();
+        }
+        let clone = document.querySelector('#ref_' + input_id).cloneNode(true);
+        clone.querySelector('img').src = '/' +  path;
+        clone.querySelector('input').value = path;
+        clone.classList.remove('ref');
+        clone.style.display = 'flex';
+        document.getElementById('inputs_' + input_id).appendChild(clone);
+        sortable_preview();
+    }
+</script>
 
 </body>
 </html>
