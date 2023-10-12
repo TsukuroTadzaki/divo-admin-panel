@@ -152,6 +152,9 @@
         document.getElementById('inputs_' + input_id).appendChild(clone);
         sortable_preview();
     }
+    function sortable_preview() {
+        $('.preview-container').sortable();
+    }
 </script>
 
 </body>
