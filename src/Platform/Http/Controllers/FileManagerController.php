@@ -15,7 +15,7 @@ class FileManagerController extends Controller
         $uploadPath = $this->decode($request->input('target'));
         $disk = config('platform.filemanager.disk', self::DISK);
         foreach ($request->file('upload') as $file) {
-            if (substr($file->getMimeType(), 0, 5) == 'image') {
+            if (substr($file->getMimeType(), 0, 5) == 'image' && !str_contains($file->getMimeType(), 'image/svg')) {
                 $name = pathinfo($file->getClientOriginalName())['filename'].'.webp';
                 $basePath = Storage::disk($disk)->path($uploadPath);
                 $path = $basePath.'/'.$name;
