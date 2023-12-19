@@ -46,7 +46,7 @@ class FileManagerScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::view('files'),
+            Layout::view('platform::files'),
         ];
     }
 }

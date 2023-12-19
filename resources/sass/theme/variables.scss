@@ -37,8 +37,8 @@ $font-size-lg:                $font-size-base * 1.25;
 $link-color: darken($text-color, 15%);
 $link-hover-color: darken($text-color, 30%);
 
-$dropdown-border-radius: 0.35rem;
-$border-radius-base: 0.2rem;
+$dropdown-border-radius: 0;
+$border-radius-base: 0;
 $border-color: darken($light, 5%);
 
 
@@ -124,9 +124,9 @@ $screen-lg-min: 1024px;
 $enable-caret: false;
 
 //Border
-$border-radius: .5rem;
-$border-radius-lg: 0.685rem;
-$border-radius-sm: .35rem;
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
 
 // Pagination
 $pagination-disabled-color: $text-muted;

@@ -16,6 +16,6 @@
             <x-orchid-icon :path="$icon" class="{{ empty($name) ?: 'me-2'}}"/>
         @endisset
 
-        <span>{{ $name ?? '' }}</span>
+        <span>{!! $name ?? '' !!}</span>
     </button>
 @endcomponent
