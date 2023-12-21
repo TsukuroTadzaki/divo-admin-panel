@@ -3,9 +3,9 @@
 $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
-    <div class="col-xs-12 col-2 bg-dark d-flex flex-column position-fixed overflow-auto h-100" data-controller="menu">
+    <div class="col-xs-12 col-md-2 bg-dark d-flex flex-column position-fixed overflow-scroll h-100 max-h-100" data-controller="menu">
 
-        <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal" id="headerMenuCollapse1212">
+        <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal mb-md-5" id="headerMenuCollapse1212">
 
             @include('platform::partials.search')
 

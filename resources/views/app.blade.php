@@ -58,7 +58,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
     <div class="row d-md-flex h-100">
         @yield('aside')
 
-        <div class="offset-2 col-10">
+        <div class="col-xxl col-xl-9 offset-md-2 col-md-10">
             @yield('body')
         </div>
     </div>
