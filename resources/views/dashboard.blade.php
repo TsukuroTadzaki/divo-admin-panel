@@ -10,7 +10,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
             <ul class="nav flex-column mb-md-1 mb-auto ps-0">
                 {!! Dashboard::renderMenu(\Orchid\Platform\Dashboard::MENU_MAIN) !!}
             </ul>
-            <div class="h-100 w-100 position-relative to-top cursor d-none d-md-flex mt-md-5"
+            <div class="h-100 w-100 position-relative to-top cursor d-flex mt-md-5"
                  data-action="click->html-load#goToTop"
                  title="{{ __('Scroll to top') }}">
                 <div class="bottom-left w-100 mb-2 ps-3 overflow-hidden">
@@ -36,15 +36,8 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 
 @section('navbar_menu')
 {{-- desktop --}}
-<div class="container-fluid d-none d-md-flex">
-    <header class="d-flex align-items-center p-2 col-2">
-        <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1"
-           data-action="click->menu#toggle">
-            <x-orchid-icon path="bs.three-dots-vertical" class="icon-menu"/>
-
-            <span class="ms-2">@yield('title')</span>
-        </a>
-
+<div class="d-none d-md-flex justify-content-betwween align-items-center w-100">
+    <header class="d-flex align-items-center p-2 ps-4 col-2">
         <a class="header-brand order-last" href="{{ route(config('platform.index')) }}">
             @includeFirst([config('platform.template.header'), 'platform::header'])
         </a>
