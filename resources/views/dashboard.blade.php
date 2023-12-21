@@ -57,7 +57,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endsection
 
 @section('navbar_manu')
-<div class="w-100 position-md-fixed z-10 bg-white">
+<div class="w-100 position-md-fixed z-10 bg-white" style="box-shadow: 0 .125rem .25rem rgba(21,20,26,.075)!important;">
     @if (!$isEmptyNavbarBanner)
         <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
     @endif
