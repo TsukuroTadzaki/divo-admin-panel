@@ -276,6 +276,7 @@ blockquote {
       display: flex;
       flex-direction: row;
       text-overflow: ellipsis;
+      margin: 1px;
 
       .nav-link {
           width: 100%;

@@ -59,7 +59,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @section('navbar_manu')
 <div class="w-100 position-md-fixed z-10 bg-white">
     @if (!$isEmptyNavbarBanner)
-        <marquee direction="left" scrollamount="10">{!! Dashboard::renderNavbarBanner() !!}</marquee>
+        <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
     @endif
     <ul class="nav d-md-flex align-items-center">
         {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
@@ -107,8 +107,12 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
                 position: fixed !important;
             }
         }
-        li.nav-item.active {
+        .aside .nav li.nav-item.active {
             background-color: #ddd;
         }
+        li.nav-item:hover {
+            background-color: #ddd;
+        }
+
     </style>
 @endpush

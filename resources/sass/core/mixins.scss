@@ -1,11 +1,11 @@
-@mixin color-schema($bg-color: #555, $percent: 15%, $sat-percent:null){
+@mixin color-schema($bg-color: #fff, $percent: 15%, $sat-percent:null){
   background-color: saturate(darken($bg-color, $percent), $sat-percent);
 }
 
 @mixin font-variant($bg-color){
   $font-color: desaturate(lighten($bg-color, 65%), 5%);
   $link-color:  desaturate(lighten($bg-color, 80%), 5%);
-  $hover-color: #fff;
+  $hover-color: #ddd;
   color: $font-color;
   a {
     color: $link-color;
