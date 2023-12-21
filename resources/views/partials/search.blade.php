@@ -21,5 +21,5 @@
     </div>
 
 @else
-    <div class="divider my-2"></div>
+    {{-- <div class="divider my-2"></div> --}}
 @endempty

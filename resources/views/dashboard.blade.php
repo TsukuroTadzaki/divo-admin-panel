@@ -4,18 +4,6 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
     <div class="aside col-xs-12 col-xxl-2 bg-dark d-flex flex-column" data-controller="menu">
-        <header class="d-xl-block p-3 mt-xl-4 w-100 d-flex align-items-center">
-            <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1"
-               data-action="click->menu#toggle">
-                <x-orchid-icon path="bs.three-dots-vertical" class="icon-menu"/>
-
-                <span class="ms-2">@yield('title')</span>
-            </a>
-
-            <a class="header-brand order-last" href="{{ route(config('platform.index')) }}">
-                @includeFirst([config('platform.template.header'), 'platform::header'])
-            </a>
-        </header>
 
         <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal" id="headerMenuCollapse1212">
 
@@ -57,13 +45,27 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endsection
 
 @section('navbar_menu')
-<div class="container-fluid">
-    @if (!$isEmptyNavbarBanner)
-        <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
-    @endif
-    <ul class="nav d-md-flex align-items-center justify-content-end">
-        {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
-    </ul>
+<div class="container-fluid d-flex">
+    <header class="d-xl-block d-flex align-items-center p-2 col-2">
+        <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1"
+           data-action="click->menu#toggle">
+            <x-orchid-icon path="bs.three-dots-vertical" class="icon-menu"/>
+
+            <span class="ms-2">@yield('title')</span>
+        </a>
+
+        <a class="header-brand order-last" href="{{ route(config('platform.index')) }}">
+            @includeFirst([config('platform.template.header'), 'platform::header'])
+        </a>
+    </header>
+    <div class="col-10">
+        @if (!$isEmptyNavbarBanner)
+            <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
+        @endif
+        <ul class="nav d-md-flex align-items-center justify-content-end">
+            {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
+        </ul>
+    </div>
 </div>
 @endsection
 
