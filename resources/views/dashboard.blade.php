@@ -3,7 +3,7 @@
 $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
-    <div class="aside col-xs-12 col-xxl-2 bg-white d-flex flex-column" style="margin-top: {{ $isEmptyNavbarBanner ? '2.5rem' : '4.5rem' }};" data-controller="menu">
+    <div class="aside col-xs-12 col-xxl-2 bg-dark d-flex flex-column" style="margin-top: {{ $isEmptyNavbarBanner ? '2.5rem' : '4.5rem' }};" data-controller="menu">
         <header class="d-xl-block p-3 mt-xl-4 w-100 d-flex align-items-center">
             <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1"
                data-action="click->menu#toggle">
@@ -57,11 +57,11 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endsection
 
 @section('navbar_manu')
-<div class="w-100 position-md-fixed z-10 bg-white" style="box-shadow: 0 .125rem .25rem rgba(21,20,26,.075)!important;">
+<div class="w-100 position-md-fixed z-10 bg-dark text-white" style="box-shadow: 0 .125rem .25rem rgba(21,20,26,.075)!important;">
     @if (!$isEmptyNavbarBanner)
         <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
     @endif
-    <ul class="nav d-md-flex align-items-center">
+    <ul class="nav d-md-flex align-items-center justify-content-end">
         {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
     </ul>
 </div>
@@ -106,12 +106,6 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
             .position-md-fixed {
                 position: fixed !important;
             }
-        }
-        .aside .nav li.nav-item.active {
-            background-color: #e9ecef;
-        }
-        li.nav-item:hover {
-            background-color: #e9ecef;
         }
 
     </style>
