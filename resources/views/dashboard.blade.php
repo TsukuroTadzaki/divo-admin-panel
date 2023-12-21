@@ -58,15 +58,15 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
             <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
         </div>
     @endif
-    <div>
-        <ul class="nav d-flex flex-nowrap flex-row overflow-auto">
-            {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
-        </ul>
-    </div>
-    <div class="m-auto ms-0 d-flex justify-content-center">
+    <div class="m-auto">
         <a class="header-brand order-first col-12" href="{{ route(config('platform.index')) }}">
             @includeFirst([config('platform.template.header'), 'platform::header'])
         </a>
+    </div>
+    <div class="col-12">
+        <ul class="nav d-flex flex-nowrap flex-row overflow-auto">
+            {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
+        </ul>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark m-auto ms-0 d-flex justify-content-between w-100">
         <div class="container-fluid">
