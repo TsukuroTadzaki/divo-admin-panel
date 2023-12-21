@@ -108,10 +108,10 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
             }
         }
         .aside .nav li.nav-item.active {
-            background-color: #ddd;
+            background-color: #e9ecef;
         }
         li.nav-item:hover {
-            background-color: #ddd;
+            background-color: #e9ecef;
         }
 
     </style>
