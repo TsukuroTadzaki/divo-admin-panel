@@ -13,7 +13,7 @@
             <x-orchid-icon :path="$icon" class="{{ empty($name) ?: 'me-2 overflow-visible'}}"/>
         @endisset
 
-        <span class="me-2">{{ $name ?? '' }}</span>
+        <span class="me-2 text-nowrap text-md-wrap">{{ $name ?? '' }}</span>
 
         @isset($badge)
             <b class="badge rounded-pill bg-{{$badge['class']}} col-auto ms-auto">{{$badge['data']()}}</b>

@@ -3,16 +3,13 @@
 $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
-    <div class="col-xs-12 col-md-2 bg-dark d-flex flex-column position-fixed overflow-scroll h-100 max-h-100" data-controller="menu">
-
+    {{-- desktop --}}
+    <div class="col-xs-12 col-md-2 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5" data-controller="menu">
         <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal mb-md-5" id="headerMenuCollapse1212">
-
-            @include('platform::partials.search')
-
+            {{-- @include('platform::partials.search') --}}
             <ul class="nav flex-column mb-md-1 mb-auto ps-0">
                 {!! Dashboard::renderMenu(\Orchid\Platform\Dashboard::MENU_MAIN) !!}
             </ul>
-
             <div class="h-100 w-100 position-relative to-top cursor d-none d-md-flex mt-md-5"
                  data-action="click->html-load#goToTop"
                  title="{{ __('Scroll to top') }}">
@@ -25,28 +22,22 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
                     </small>
                 </div>
             </div>
-
-            <footer class="position-sticky bottom-0">
-                {{-- <div class="bg-dark position-relative overflow-hidden" style="padding-bottom: 10px;">
+            {{-- <footer class="position-sticky bottom-0">
+                <div class="bg-dark position-relative overflow-hidden" style="padding-bottom: 10px;">
                     @includeWhen(Auth::check(), 'platform::partials.profile')
-                </div> --}}
-
-
-                {{--
+                </div>
                 <div class="mt-3">
                     @includeFirst([config('platform.template.footer'), 'platform::footer'])
                 </div>
-
-                --}}
-
-            </footer>
+            </footer> --}}
         </nav>
     </div>
 @endsection
 
 @section('navbar_menu')
-<div class="container-fluid d-flex">
-    <header class="d-xl-block d-flex align-items-center p-2 col-2">
+{{-- desktop --}}
+<div class="container-fluid d-none d-md-flex">
+    <header class="d-flex align-items-center p-2 col-2">
         <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1"
            data-action="click->menu#toggle">
             <x-orchid-icon path="bs.three-dots-vertical" class="icon-menu"/>
@@ -66,6 +57,37 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
             {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
         </ul>
     </div>
+</div>
+{{-- mobile --}}
+<div class="container-fluid d-flex flex-column d-md-none col-12">
+    @if (!$isEmptyNavbarBanner)
+        <div class="m-auto ms-0">
+            <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
+        </div>
+    @endif
+    <div>
+        <ul class="nav d-flex flex-nowrap flex-row overflow-auto">
+            {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
+        </ul>
+    </div>
+    <div class="m-auto ms-0 d-flex justify-content-center">
+        <a class="header-brand order-first col-12" href="{{ route(config('platform.index')) }}">
+            @includeFirst([config('platform.template.header'), 'platform::header'])
+        </a>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark m-auto ms-0 d-flex justify-content-between w-100">
+        <div class="container-fluid">
+            <span class="ms-2">@yield('title')</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mt-3" id="navbarTogglerDemo02">
+                <ul class="nav flex-column mb-md-1 mb-auto ps-0">
+                    {!! Dashboard::renderMenu(\Orchid\Platform\Dashboard::MENU_MAIN) !!}
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
 @endsection
 
