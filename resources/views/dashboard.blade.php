@@ -1,7 +1,7 @@
 @extends(config('platform.workspace', 'platform::workspace.compact'))
 
 @section('aside')
-    <div class="aside col-xs-12 col-xxl-2 bg-dark d-flex flex-column" data-controller="menu">
+    <div class="aside col-xs-12 col-xxl-2 bg-dark d-flex flex-column mt-md-4" data-controller="menu">
         <header class="d-xl-block p-3 mt-xl-4 w-100 d-flex align-items-center">
             <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1"
                data-action="click->menu#toggle">
@@ -54,6 +54,14 @@
     </div>
 @endsection
 
+@section('navbar_manu')
+<div class="w-100 position-md-fixed z-10">
+    <ul class="nav d-md-flex align-items-center bg-white">
+        {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
+    </ul>
+</div>
+@endsection
+
 @section('workspace')
     @if(Breadcrumbs::has())
         <nav aria-label="breadcrumb">
@@ -83,3 +91,16 @@
     @include('platform::partials.alert')
     @yield('content')
 @endsection
+
+@push('head')
+    <style>
+        .z-10 {
+            z-index: 10;
+        }
+        @media (min-width: 768px) {
+            .position-md-fixed {
+                position: fixed !important;
+            }
+        }
+    </style>
+@endpush

@@ -47,13 +47,15 @@
 </head>
 
 <body class="{{ \Orchid\Support\Names::getPageNameClass() }}" data-controller="pull-to-refresh">
-
+<div class="">
+    @yield('navbar_manu')
+</div>
 <div class="container-fluid" data-controller="@yield('controller')" @yield('controller-data')>
 
     <div class="row d-md-flex h-100">
         @yield('aside')
 
-        <div class="col-xxl col-xl-9 col-12">
+        <div class="col-xxl col-xl-9 col-12 mt-md-5">
             @yield('body')
         </div>
     </div>

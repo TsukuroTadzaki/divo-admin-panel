@@ -29,6 +29,7 @@ class Dashboard
      * Slug for main menu.
      */
     public const MENU_MAIN = 'Main';
+    public const MENU_NAVBAR = 'Navbar';
 
     /**
      * The Dashboard configuration options.
@@ -44,6 +45,11 @@ class Dashboard
      * @var Collection
      */
     public $menu;
+
+    /**
+     * @var Collection
+     */
+    public $navbar;
 
     /**
      * JS and CSS resources for implementation in the panel.
@@ -363,6 +369,42 @@ class Dashboard
     }
 
     /**
+     * Adding a new element to the menu.
+     *
+     *
+     * @return $this
+     */
+    public function registerNavbarElement(Menu $item): Dashboard
+    {
+        if ($item->get('sort', 0) === 0) {
+            $item->sort($this->navbar->get(self::MENU_NAVBAR)->count() + 1);
+        }
+
+        $this->navbar->get(self::MENU_NAVBAR)->add($item);
+
+        return $this;
+    }
+
+    /**
+     * Generate on the menu display.
+     *
+     *
+     * @throws \Throwable
+     */
+    public function renderNavbar(): string
+    {
+        return $this->navbar->get(self::MENU_NAVBAR)
+            ->sort(fn (Menu $current, Menu $next) => $current->get('sort', 0) <=> $next->get('sort', 0))
+            ->map(fn (Menu $item) => (string) $item->render())
+            ->implode('');
+    }
+
+    public function isEmptyNavbar(): bool
+    {
+        return $this->navbar->get(self::MENU_NAVBAR)->isEmpty();
+    }
+
+    /**
      * @param Menu[] $list
      */
     public function addMenuSubElements(string $slug, array $list): Dashboard
@@ -384,6 +426,9 @@ class Dashboard
     {
         $this->menu = collect([
             self::MENU_MAIN    => collect(),
+        ]);
+        $this->navbar = collect([
+            self::MENU_NAVBAR    => collect(),
         ]);
 
         $this->currentScreen = null;

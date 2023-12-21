@@ -23,6 +23,9 @@ abstract class OrchidServiceProvider extends ServiceProvider
             foreach ([...$this->menu(), ...$this->registerMenu(), ...$this->registerMainMenu(), ...$this->registerProfileMenu()] as $element) {
                 $dashboard->registerMenuElement($element);
             }
+            foreach ($this->navbar() as $element) {
+                $dashboard->registerNavbarElement($element);
+            }
         });
 
         // Register the permissions
@@ -40,6 +43,16 @@ abstract class OrchidServiceProvider extends ServiceProvider
      * @return \Orchid\Screen\Actions\Menu[]
      */
     public function menu(): array
+    {
+        return [];
+    }
+
+    /**
+     * Returns an array of navbar menu items.
+     *
+     * @return \Orchid\Screen\Actions\Menu[]
+     */
+    public function navbar(): array
     {
         return [];
     }
