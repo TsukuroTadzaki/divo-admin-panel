@@ -52,6 +52,11 @@ class Dashboard
     public $navbar;
 
     /**
+     * @var string|null
+     */
+    public $navbar_banner = null;
+
+    /**
      * JS and CSS resources for implementation in the panel.
      *
      * @var Collection
@@ -399,10 +404,35 @@ class Dashboard
             ->implode('');
     }
 
-    public function isEmptyNavbar(): bool
+    /**
+     * Set navbar banner text.
+     *
+     *
+     * @return $this
+     */
+    public function registerNavbarBanner(string $item): Dashboard
     {
-        return $this->navbar->get(self::MENU_NAVBAR)->isEmpty();
+        $this->navbar_banner = $item;
+        return $this;
     }
+
+    /**
+     * Generate navbar banner text.
+     *
+     *
+     * @throws \Throwable
+     */
+    public function renderNavbarBanner(): string
+    {
+        return $this->navbar_banner;
+    }
+
+    public function isEmptyNavbarBanner(): bool
+    {
+        return empty($this->navbar_banner);
+    }
+
+
 
     /**
      * @param Menu[] $list

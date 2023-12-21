@@ -1,3 +1,6 @@
+@php
+$isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
+@endphp
 <!DOCTYPE html>
 <html lang="{{  app()->getLocale() }}" data-controller="html-load" dir="{{ \Orchid\Support\Locale::currentDir() }}">
 <head>
@@ -55,7 +58,7 @@
     <div class="row d-md-flex h-100">
         @yield('aside')
 
-        <div class="col-xxl col-xl-9 col-12 mt-md-5">
+        <div class="col-xxl col-xl-9 col-12" style="margin-top: {{ $isEmptyNavbarBanner ? '2.5rem' : '4.5rem' }};">
             @yield('body')
         </div>
     </div>

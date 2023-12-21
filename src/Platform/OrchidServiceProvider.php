@@ -26,6 +26,7 @@ abstract class OrchidServiceProvider extends ServiceProvider
             foreach ($this->navbar() as $element) {
                 $dashboard->registerNavbarElement($element);
             }
+            $dashboard->registerNavbarBanner($this->navbarBanner());
         });
 
         // Register the permissions
@@ -55,6 +56,16 @@ abstract class OrchidServiceProvider extends ServiceProvider
     public function navbar(): array
     {
         return [];
+    }
+
+    /**
+     * Returns navbar banner html string.
+     *
+     * @return string
+     */
+    public function navbarBanner(): string
+    {
+        return '';
     }
 
     /**
