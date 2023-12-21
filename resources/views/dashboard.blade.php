@@ -3,7 +3,7 @@
 $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
-    <div class="aside col-xs-12 col-xxl-2 bg-dark d-flex flex-column" style="margin-top: {{ $isEmptyNavbarBanner ? '2.5rem' : '4.5rem' }};" data-controller="menu">
+    <div class="aside col-xs-12 col-xxl-2 bg-white d-flex flex-column" style="margin-top: {{ $isEmptyNavbarBanner ? '2.5rem' : '4.5rem' }};" data-controller="menu">
         <header class="d-xl-block p-3 mt-xl-4 w-100 d-flex align-items-center">
             <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1"
                data-action="click->menu#toggle">
@@ -39,9 +39,9 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
             </div>
 
             <footer class="position-sticky bottom-0">
-                <div class="bg-dark position-relative overflow-hidden" style="padding-bottom: 10px;">
+                {{-- <div class="bg-dark position-relative overflow-hidden" style="padding-bottom: 10px;">
                     @includeWhen(Auth::check(), 'platform::partials.profile')
-                </div>
+                </div> --}}
 
 
                 {{--
@@ -106,6 +106,9 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
             .position-md-fixed {
                 position: fixed !important;
             }
+        }
+        li.nav-item.active {
+            background-color: #ddd;
         }
     </style>
 @endpush
