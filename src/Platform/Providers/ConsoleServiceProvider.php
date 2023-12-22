@@ -52,10 +52,10 @@ class ConsoleServiceProvider extends ServiceProvider
         ]);
 
         $this
-            ->registerMigrationsPublisher()
+            //->registerMigrationsPublisher()
             ->registerTranslationsPublisher()
             ->registerConfigPublisher()
-            ->registerOrchidPublisher()
+            //->registerOrchidPublisher()
             ->registerViewsPublisher()
             ->registerAssetsPublisher()
             ->commands($this->commands);
@@ -112,6 +112,7 @@ class ConsoleServiceProvider extends ServiceProvider
     {
         $this->publishes([
             Dashboard::path('config/platform.php') => config_path('platform.php'),
+            Dashboard::path('config/elfinder.php') => config_path('elfinder.php'),
         ], 'orchid-config');
 
         return $this;

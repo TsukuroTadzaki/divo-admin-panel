@@ -41,15 +41,15 @@ class InstallCommand extends Command
                 '--provider' => ConsoleServiceProvider::class,
                 '--tag'      => [
                     'orchid-config',
-                    'orchid-migrations',
-                    'orchid-app-stubs',
+                    //'orchid-migrations',
+                    //'orchid-app-stubs',
                     'orchid-assets',
                 ],
-            ])
-            ->executeCommand('migrate')
-            ->executeCommand('storage:link')
-            ->changeUserModel()
-            ->setValueEnv('SCOUT_DRIVER');
+            ]);
+            //->executeCommand('migrate')
+            //->executeCommand('storage:link')
+            //->changeUserModel();
+            //->setValueEnv('SCOUT_DRIVER');
 
         $this->comment('Publishing filemanager assets...');
         $this->executeCommand('elfinder:publish');
