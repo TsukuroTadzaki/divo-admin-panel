@@ -142,13 +142,13 @@
         flex-direction: column;
         margin-right: 1rem;
         margin-bottom: 1rem;
-        width: 150px;
-        height: 150px;
+        width: auto !important;
+        height: auto !important;
     }
     .preview-wrapper img {
-        width: 100%;
-        height: auto;
-        margin: auto;
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0 !important;
     }
     .remove-image {
         display: inline;

@@ -13,6 +13,7 @@
                 rememberLastDir : false,
                 useBrowserHistory: false,
                 reloadClearHistory: true,
+                lang: '{{ app()->getLocale() }}'
             });
         }
 </script>
