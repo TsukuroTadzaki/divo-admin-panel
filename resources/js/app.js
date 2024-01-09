@@ -28,3 +28,48 @@ if (typeof window.application !== 'undefined') {
     window.application.register('fields--repeater', FieldsRepeater);
     window.application.register("ckeditor", CKEditorController);
 }
+
+//darkmode
+window.addEventListener('turbo:load', (event) => {
+    let toggler = document.getElementById('darkmodeToggle')
+    let navbar = document.getElementById('navbar-section')
+    let sidebar = document.getElementById('aside-section')
+
+    //init theme on load
+    let initTheme = localStorage.getItem('theme') || 'dark'
+    if (initTheme === 'dark') {
+        setDark()
+    } else if (initTheme === 'light') {
+        setLight()
+    }
+
+    //toggle theme event
+    toggler.addEventListener('click', function() {
+        let currentTheme = localStorage.getItem('theme') || 'dark'
+        if (currentTheme === 'dark') {
+            setLight()
+        } else if (currentTheme === 'light') {
+            setDark()
+        }
+    })
+
+    //set dark theme
+    function setDark() {
+        toggler.firstElementChild.setAttribute('fill', '#fff')
+        navbar.classList.remove('bg-white')
+        navbar.classList.add('bg-dark')
+        sidebar.classList.remove('bg-white')
+        sidebar.classList.add('bg-dark')
+        localStorage.setItem('theme', 'dark')
+    }
+
+    //set light theme
+    function setLight() {
+        toggler.firstElementChild.setAttribute('fill', '#000')
+        navbar.classList.remove('bg-dark')
+        navbar.classList.add('bg-white')
+        sidebar.classList.remove('bg-dark')
+        sidebar.classList.add('bg-white')
+        localStorage.setItem('theme', 'light')
+    }
+});

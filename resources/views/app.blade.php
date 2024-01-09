@@ -50,7 +50,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 </head>
 
 <body class="{{ \Orchid\Support\Names::getPageNameClass() }}" data-controller="pull-to-refresh">
-<nav class="navbar sticky-top bg-dark" style="box-shadow: 0 .125rem .25rem rgba(21,20,26,.075)!important;">
+<nav class="navbar sticky-top bg-dark" style="box-shadow: 0 .125rem .25rem rgba(21,20,26,.075)!important;" id="navbar-section">
     @yield('navbar_menu')
 </nav>
 <div class="container-fluid" data-controller="@yield('controller')" @yield('controller-data')>

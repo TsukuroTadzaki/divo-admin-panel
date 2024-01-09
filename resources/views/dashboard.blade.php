@@ -4,7 +4,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
     {{-- desktop --}}
-    <div class="col-xs-12 col-md-2 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5" data-controller="menu">
+    <div class="col-xs-12 col-md-2 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5" data-controller="menu" id="aside-section">
         <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal mb-md-5" id="headerMenuCollapse1212">
             {{-- @include('platform::partials.search') --}}
             <ul class="nav flex-column mb-md-1 mb-auto ps-0">
@@ -22,14 +22,15 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
                     </small>
                 </div>
             </div>
-            {{-- <footer class="position-sticky bottom-0">
-                <div class="bg-dark position-relative overflow-hidden" style="padding-bottom: 10px;">
-                    @includeWhen(Auth::check(), 'platform::partials.profile')
+            <footer class="position-sticky bottom-0">
+                <div class="position-fixed overflow-hidden bottom-0" style="padding-bottom: 10px;">
+                    <svg id="darkmodeToggle" width="20px" height="20px" viewBox="0 0 24 24">
+                        <g fill="#fff" fill-rule="nonzero">
+                            <path d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20.5 L12,3.5 C16.6944204,3.5 20.5,7.30557963 20.5,12 C20.5,16.6944204 16.6944204,20.5 12,20.5 Z"></path>
+                        </g>
+                    </svg>
                 </div>
-                <div class="mt-3">
-                    @includeFirst([config('platform.template.footer'), 'platform::footer'])
-                </div>
-            </footer> --}}
+            </footer>
         </nav>
     </div>
 @endsection
