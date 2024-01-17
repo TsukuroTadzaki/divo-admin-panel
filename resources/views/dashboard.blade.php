@@ -5,7 +5,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @section('aside')
     {{-- desktop --}}
     <div class="col-xs-12 col-md-2 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5" data-controller="menu" id="aside-section">
-        <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal mb-md-5" id="headerMenuCollapse1212">
+        <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal mb-md-5" id="headerMenuCollapse1212" style="overflow-x: hidden !important;">
             {{-- @include('platform::partials.search') --}}
             <ul class="nav flex-column mb-md-1 mb-auto ps-0">
                 {!! Dashboard::renderMenu(\Orchid\Platform\Dashboard::MENU_MAIN) !!}
