@@ -25,7 +25,7 @@ class FileManagerScreen extends Screen
      */
     public function name(): ?string
     {
-        return _t('File Manager');
+        return __('File Manager');
     }
 
     /**
