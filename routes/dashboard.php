@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Cache;
 use Tabuna\Breadcrumbs\Trail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Orchid\Platform\Http\Screens\SearchScreen;
 use Orchid\Platform\Http\Screens\FileManagerScreen;
 use Orchid\Platform\Http\Screens\NotificationScreen;
@@ -18,7 +20,11 @@ use Orchid\Platform\Http\Controllers\FileManagerController;
 Route::get('/', [IndexController::class, 'index'])
     ->name('index')
     ->breadcrumbs(fn (Trail $trail) => $trail->push(__('Home'), route('platform.index')));
-
+Route::get('/platform/locale', function () {
+    Session::put('locale', request()->input('locale'));
+    Cache::put('locale', request()->input('locale'), now()->addYear());
+    return redirect()->back();
+})->name('localize');
 Route::screen('search/{query}', SearchScreen::class)
     ->name('search')
     ->breadcrumbs(fn (Trail $trail, string $query) => $trail->parent('platform.index')

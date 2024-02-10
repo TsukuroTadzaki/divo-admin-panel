@@ -3,36 +3,32 @@
 $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
-    {{-- desktop --}}
-    <div class="col-xs-12 col-md-2 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5" data-controller="menu" id="aside-section">
-        <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal mb-md-5" id="headerMenuCollapse1212" style="overflow-x: hidden !important;">
-            {{-- @include('platform::partials.search') --}}
-            <ul class="nav flex-column mb-md-1 mb-auto ps-0">
-                {!! Dashboard::renderMenu(\Orchid\Platform\Dashboard::MENU_MAIN) !!}
-            </ul>
-            <div class="h-100 w-100 position-relative to-top cursor d-flex mt-md-5"
-                 data-action="click->html-load#goToTop"
-                 title="{{ __('Scroll to top') }}">
-                <div class="bottom-left w-100 mb-2 ps-3 overflow-hidden">
-                    <small data-controller="viewport-entrance-toggle"
-                           class="scroll-to-top"
-                           data-viewport-entrance-toggle-class="show">
-                        <x-orchid-icon path="bs.chevron-up" class="me-2 text-white"/>
-                        {{ __('Scroll to top') }}
-                    </small>
-                </div>
+{{-- desktop --}}
+<div class="col-xs-12 col-md-2 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5" data-controller="menu" id="aside-section">
+    <nav class="aside-collapse w-100 d-xl-flex flex-column collapse-horizontal mb-md-5" id="headerMenuCollapse1212" style="overflow-x: hidden !important;">
+        {{-- @include('platform::partials.search') --}}
+        <ul class="nav flex-column mb-md-1 mb-auto ps-0">
+            {!! Dashboard::renderMenu(\Orchid\Platform\Dashboard::MENU_MAIN) !!}
+        </ul>
+        <div class="h-100 w-100 position-relative to-top cursor d-flex mt-md-5" data-action="click->html-load#goToTop" title="{{ __('Scroll to top') }}">
+            <div class="bottom-left w-100 mb-2 ps-3 overflow-hidden">
+                <small data-controller="viewport-entrance-toggle" class="scroll-to-top" data-viewport-entrance-toggle-class="show">
+                    <x-orchid-icon path="bs.chevron-up" class="me-2 text-white" />
+                    {{ __('Scroll to top') }}
+                </small>
             </div>
-            <footer class="position-sticky bottom-0">
-                <div class="position-fixed overflow-hidden bottom-0" style="padding-bottom: 10px;">
-                    <svg id="darkmodeToggle" width="20px" height="20px" viewBox="0 0 24 24">
-                        <g fill="#fff" fill-rule="nonzero">
-                            <path d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20.5 L12,3.5 C16.6944204,3.5 20.5,7.30557963 20.5,12 C20.5,16.6944204 16.6944204,20.5 12,20.5 Z"></path>
-                        </g>
-                    </svg>
-                </div>
-            </footer>
-        </nav>
-    </div>
+        </div>
+        <footer class="position-sticky bottom-0">
+            <div class="position-fixed overflow-hidden bottom-0" style="padding-bottom: 10px;">
+                <svg id="darkmodeToggle" width="20px" height="20px" viewBox="0 0 24 24">
+                    <g fill="#fff" fill-rule="nonzero">
+                        <path d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20.5 L12,3.5 C16.6944204,3.5 20.5,7.30557963 20.5,12 C20.5,16.6944204 16.6944204,20.5 12,20.5 Z"></path>
+                    </g>
+                </svg>
+            </div>
+        </footer>
+    </nav>
+</div>
 @endsection
 
 @section('navbar_menu')
@@ -45,9 +41,16 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
     </header>
     <div class="col-10">
         @if (!$isEmptyNavbarBanner)
-            <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
+        <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
         @endif
         <ul class="nav d-md-flex align-items-center justify-content-end">
+            <li class="d-flex">
+                @foreach(app('lang')->getActiveLanguages() as $lang)
+                <a href="{{ route('platform.localize', ['locale' => $lang->slug]) }}" class="nav-link text-white">
+                    {{ strtoupper($lang->slug) }}
+                </a>
+                @endforeach
+            </li>
             {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
         </ul>
     </div>
@@ -55,9 +58,9 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 {{-- mobile --}}
 <div class="container-fluid d-flex flex-column d-md-none col-12">
     @if (!$isEmptyNavbarBanner)
-        <div class="m-auto ms-0">
-            <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
-        </div>
+    <div class="m-auto ms-0">
+        <marquee direction="left" scrollamount="8">{!! Dashboard::renderNavbarBanner() !!}</marquee>
+    </div>
     @endif
     <div class="m-auto">
         <a class="header-brand order-first col-12" href="{{ route(config('platform.index')) }}">
@@ -86,37 +89,34 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endsection
 
 @section('workspace')
-    @if(Breadcrumbs::has())
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb px-4 mb-2">
-                <x-tabuna-breadcrumbs
-                    class="breadcrumb-item"
-                    active="active"
-                />
-            </ol>
+@if(Breadcrumbs::has())
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb px-4 mb-2">
+        <x-tabuna-breadcrumbs class="breadcrumb-item" active="active" />
+    </ol>
+</nav>
+@endif
+
+<div class="order-last order-md-0 command-bar-wrapper">
+    <div class="@hasSection('navbar') @else d-none d-md-block @endif layout d-md-flex align-items-center">
+        <header class="d-none d-md-block col-xs-12 col-md p-0 me-3">
+            <h1 class="m-0 fw-light h3 text-black">@yield('title')</h1>
+            <small class="text-muted" title="@yield('description')">@yield('description')</small>
+        </header>
+        <nav class="col-xs-12 col-md-auto ms-md-auto p-0">
+            <ul class="nav command-bar justify-content-sm-end justify-content-start d-flex align-items-center">
+                @yield('navbar')
+            </ul>
         </nav>
-    @endif
-
-    <div class="order-last order-md-0 command-bar-wrapper">
-        <div class="@hasSection('navbar') @else d-none d-md-block @endif layout d-md-flex align-items-center">
-            <header class="d-none d-md-block col-xs-12 col-md p-0 me-3">
-                <h1 class="m-0 fw-light h3 text-black">@yield('title')</h1>
-                <small class="text-muted" title="@yield('description')">@yield('description')</small>
-            </header>
-            <nav class="col-xs-12 col-md-auto ms-md-auto p-0">
-                <ul class="nav command-bar justify-content-sm-end justify-content-start d-flex align-items-center">
-                    @yield('navbar')
-                </ul>
-            </nav>
-        </div>
     </div>
+</div>
 
-    @include('platform::partials.alert')
-    @yield('content')
+@include('platform::partials.alert')
+@yield('content')
 @endsection
 
 @push('head')
-    <style>
+<style>
 
-    </style>
+</style>
 @endpush

@@ -48,9 +48,8 @@ function slugHandler(event) {
                     slugGenerator(item.value, slugInput);
                 }
                 field.value = slugInput.value;
-                for(let input of document.querySelectorAll('input')){
+                for(let input of item.closest('fieldset').querySelectorAll('input')){
                     if(input.name.includes('title') || input.name.includes('h1')){
-                    console.log(input.value == item.value)
                         if(input.value.length === 0 || input.value == item.value.slice(0,-1)){
                             input.value = item.value;
                         }
