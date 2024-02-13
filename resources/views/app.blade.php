@@ -50,10 +50,10 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 </head>
 
 <body class="{{ \Orchid\Support\Names::getPageNameClass() }}" data-controller="pull-to-refresh">
-<nav class="navbar sticky-top bg-dark" style="box-shadow: 0 .125rem .25rem rgba(21,20,26,.075)!important;" id="navbar-section">
+<nav class="navbar fixed-top bg-dark" style="box-shadow: 0 .125rem .25rem rgba(21,20,26,.075)!important;" id="navbar-section">
     @yield('navbar_menu')
 </nav>
-<div class="container-fluid" data-controller="@yield('controller')" @yield('controller-data')>
+<div class="container-fluid" style="margin-top: 60px;" data-controller="@yield('controller')" @yield('controller-data')>
 
     <div class="row d-md-flex h-100">
         @yield('aside')
@@ -66,7 +66,6 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 
     @include('platform::partials.toast')
 </div>
-
 @stack('scripts')
 <script type="text/javascript">
     function openPicker(input_id, multiple = 0, mimes = []) {

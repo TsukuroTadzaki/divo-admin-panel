@@ -32,3 +32,12 @@
 // Core variables and mixins
 @import "~open-color/open-color";
 @import "plugins/repeater";
+
+h1{
+   font-size: 1.5rem;
+}
+body{
+   nav {
+      max-height: 60px;
+   }
+}
