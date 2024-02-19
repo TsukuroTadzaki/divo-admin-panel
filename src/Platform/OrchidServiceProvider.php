@@ -11,6 +11,7 @@ use Illuminate\Support\ServiceProvider;
  * This class represents the Orchid Service Provider.
  * It is used to register the menus, permissions and search models to the dashboard.
  */
+
 abstract class OrchidServiceProvider extends ServiceProvider
 {
     /**
@@ -26,6 +27,10 @@ abstract class OrchidServiceProvider extends ServiceProvider
             foreach ($this->navbar() as $element) {
                 $dashboard->registerNavbarElement($element);
             }
+            $dashboard->registerNewMenu($this->newMenu());
+            // foreach($this->newMenu() as $element) {
+            //     $dashboard->registerMenuElement($element);
+            // }
             $dashboard->registerNavbarBanner($this->navbarBanner());
         });
 
@@ -47,7 +52,10 @@ abstract class OrchidServiceProvider extends ServiceProvider
     {
         return [];
     }
-
+    public function newMenu(): array
+    {
+        return [];
+    }
     /**
      * Returns an array of navbar menu items.
      *

@@ -119,21 +119,21 @@ class FoundationServiceProvider extends ServiceProvider
             ->registerProviders();
 
         $this->app->singleton(Dashboard::class, static fn () => new Dashboard());
-        $this->app->bind('translates', function () {
-            return DB::table(Translate::TABLE)
-                ->where('language_id', app('lang')->getCurrentLanguageId())
-                ->select(['key', 'translate'])
-                ->pluck('translate', 'key')
-                ->toArray();
-        });
+        // $this->app->bind('translates', function () {
+        //     return DB::table(Translate::TABLE)
+        //         ->where('language_id', app('lang')->getCurrentLanguageId())
+        //         ->select(['key', 'translate'])
+        //         ->pluck('translate', 'key')
+        //         ->toArray();
+        // });
 
         if (! Route::hasMacro('screen')) {
             Route::macro('screen', function ($url, $screen) {
                 /** @var Router $this */
                 $route = $this->match(['GET', 'HEAD', 'POST'], $url.'/{method?}', $screen);
-                
+
                 $route->where('method', $screen::getAvailableMethods()->implode('|'));
-                
+
                 return $route;
             });
         }

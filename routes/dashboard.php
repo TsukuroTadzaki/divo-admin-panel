@@ -16,6 +16,7 @@ use Orchid\Platform\Http\Controllers\SortableController;
 use Orchid\Platform\Http\Controllers\AttachmentController;
 use Orchid\Platform\Http\Controllers\FileManagerController;
 
+// dd(13);
 // Index and default...
 Route::get('/', [IndexController::class, 'index'])
     ->name('index')

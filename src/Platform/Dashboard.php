@@ -30,6 +30,7 @@ class Dashboard
      */
     public const MENU_MAIN = 'Main';
     public const MENU_NAVBAR = 'Navbar';
+    public const NEW_MENU = 'New';
 
     /**
      * The Dashboard configuration options.
@@ -50,6 +51,8 @@ class Dashboard
      * @var Collection
      */
     public $navbar;
+
+    public $newMenu;
 
     /**
      * @var string|null
@@ -120,7 +123,7 @@ class Dashboard
 
         throw_unless(File::exists($publishedPath), new RuntimeException('Orchid assets are not published. Please run: `php artisan orchid:publish`'));
 
-        return File::get($publishedPath) === File::get(__DIR__.'/../../public/mix-manifest.json');
+        return File::get($publishedPath) === File::get(__DIR__ . '/../../public/mix-manifest.json');
     }
 
     /**
@@ -130,7 +133,7 @@ class Dashboard
     {
         $prefix = config('platform.prefix');
 
-        return Str::start($prefix.$path, '/');
+        return Str::start($prefix . $path, '/');
     }
 
     /**
@@ -168,7 +171,7 @@ class Dashboard
      */
     public static function model(string $key, string $default = null): string
     {
-        return Arr::get(static::$options, 'models.'.$key, $default ?? $key);
+        return Arr::get(static::$options, 'models.' . $key, $default ?? $key);
     }
 
     /**
@@ -186,7 +189,7 @@ class Dashboard
     {
         $current = dirname(__DIR__, 2);
 
-        return realpath($current.($path ? DIRECTORY_SEPARATOR.$path : $path));
+        return realpath($current . ($path ? DIRECTORY_SEPARATOR . $path : $path));
     }
 
     /**
@@ -263,11 +266,11 @@ class Dashboard
     public function getPermission($groups = []): Collection
     {
         $all = $this->permission->get('all')
-            ->when(! empty($groups), fn (Collection $collection) => $collection->only($groups));
+            ->when(!empty($groups), fn (Collection $collection) => $collection->only($groups));
 
         $removed = $this->permission->get('removed');
 
-        if (! $removed->count()) {
+        if (!$removed->count()) {
             return $all;
         }
 
@@ -389,6 +392,15 @@ class Dashboard
 
         return $this;
     }
+    public function registerNewMenu(array $items)
+    {
+        $this->newMenu = $items;
+        return $this;
+    }
+    public function renderNewMenu()
+    {
+        return $this->newMenu;
+    }
 
     /**
      * Generate on the menu display.
@@ -460,6 +472,7 @@ class Dashboard
         $this->navbar = collect([
             self::MENU_NAVBAR    => collect(),
         ]);
+        $this->newMenu = collect();
 
         $this->currentScreen = null;
         $this->partialRequest = false;

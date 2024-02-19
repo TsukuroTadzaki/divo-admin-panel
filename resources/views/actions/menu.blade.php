@@ -3,7 +3,6 @@
         <small class="text-muted ms-4 w-100 user-select-none">{{ __($title) }}</small>
     </li>
 @endisset
-
 @if (!empty($name))
 <li class="nav-item {{ active($active) }}">
     <a data-turbo="{{ var_export($turbo) }}"
@@ -13,10 +12,13 @@
             <x-orchid-icon :path="$icon" class="{{ empty($name) ?: 'me-2 overflow-visible'}}"/>
         @endisset
 
-        <span class="me-2 text-nowrap text-md-wrap">{{ $name ?? '' }}</span>
+        <span class="me-2 text-md-wrap">{{ $name ?? '' }}</span>
 
         @isset($badge)
             <b class="badge rounded-pill bg-{{$badge['class']}} col-auto ms-auto">{{$badge['data']()}}</b>
+        @endisset
+        @isset($attributes['data-bs-toggle'])
+                <x-orchid-icon path="arrow-right" class="ms-auto"/>
         @endisset
     </a>
 </li>

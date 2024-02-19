@@ -202,7 +202,6 @@ class Field implements Fieldable, Htmlable
         $this->set('id', $id);
 
         $errors = $this->getErrorsMessage();
-
         return view($this->view, array_merge($this->getAttributes(), [
             'attributes'     => $this->getAllowAttributes(),
             'dataAttributes' => $this->getAllowDataAttributes(),
