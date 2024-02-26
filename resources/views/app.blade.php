@@ -53,12 +53,12 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 <nav class="navbar fixed-top bg-dark top-navbar" id="navbar-section">
     @yield('navbar_menu')
 </nav>
-<div class="container-fluid" style="margin-top: 50px;" data-controller="@yield('controller')" @yield('controller-data')>
+<div class="container-fluid super-main-container" data-controller="@yield('controller')" @yield('controller-data')>
 
     <div class="row d-md-flex h-100">
         @yield('aside')
 
-        <div class="col-xxl col-xl-9 offset-md-3 col-md-10">
+        <div class="col-xxl col-xl-9 offset-md-3 col-md-10 main-content-bar">
             @yield('body')
         </div>
     </div>
