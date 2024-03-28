@@ -16,8 +16,9 @@ class FileManagerController extends Controller
         $uploadPath = $this->decode($request->input('target'));
         $disk = config('platform.filemanager.disk', self::DISK);
         foreach ($request->file('upload') as $file) {
-            $newFileName = strtolower(config('app.name') . '-' . Carbon::now()->timestamp) . '.webp';
+            $newFileName = strtolower(config('app.name') . '-' . Carbon::now()->timestamp);
             if (substr($file->getMimeType(), 0, 5) == 'image' && !str_contains($file->getMimeType(), 'image/svg')) {
+                $newFileName = $newFileName . '.webp';
                 $name = pathinfo($file->getClientOriginalName())['filename'] . '.webp';
                 $basePath = Storage::disk($disk)->path($uploadPath);
                 $path = $basePath . '/' . $newFileName;
@@ -38,7 +39,7 @@ class FileManagerController extends Controller
                         ->save($basePath . '/' . 'watermark/' . $newFileName);
                 }
             } else {
-                $file->storeAs($uploadPath, $newFileName, $disk);
+                $file->storeAs($uploadPath, $newFileName . '.' . $file->extension() , $disk);
             }
         }
     }
