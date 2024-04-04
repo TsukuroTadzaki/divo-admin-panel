@@ -1,8 +1,42 @@
 #save-button:not(.btn-danger) {
-    background-color: #28a745!important;
-    border-color: #28a745!important;
+    background-color: #28a1e7 !important;
+    border-color: #28a1e7 !important;
     color: #fff!important;
 }
+.btn-link:hover,.btn-default:hover{
+    background: #28a1e740 !important;
+    color: black !important;
+    border-radius: 3px !important;
+}
+.btn-link,.btn-default{
+    border-radius: 3px !important;
+}
+
 .nav-tabs-alt {
     margin-bottom: 1.5rem;
+}
+.logo .slogan {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin-left: 1rem;
+}
+.logo .slogan span:first-child {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.logo .slogan span:last-child {
+    font-size: 14px;
+    font-weight: lighter;
+    letter-spacing: 10px;
+    margin-left: 1px;
+    text-transform: uppercase;
+}
+.logo {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
 }

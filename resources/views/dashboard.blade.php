@@ -4,7 +4,7 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
 @endphp
 @section('aside')
 {{-- desktop --}}
-<div class="col-xs-12 col-md-3 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5 sidebar-nav" data-controller="menu" id="aside-section">
+<div class="col-xs-12 col-md-2 bg-dark d-none d-md-flex flex-column position-fixed overflow-scroll h-100 pb-md-5 sidebar-nav" data-controller="menu" id="aside-section">
     <div class="row side-container">
         <div class="left-side col-lg-3">
             <ul class="nav flex-column mb-md-1 mb-auto ps-0 tab-head-wrapper">

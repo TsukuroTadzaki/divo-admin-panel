@@ -37,6 +37,8 @@ document.addEventListener('turbo:load', () => {
                 tab.click();
             }
         });
+    } else {
+        document.querySelector('.tab-head-wrapper a').click();
     }
     document.querySelectorAll('.tab-head-wrapper a').forEach(tab => {
         tab.addEventListener('click', function () {
