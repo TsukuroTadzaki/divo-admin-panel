@@ -1,23 +1,5 @@
 <footer class="pb-3 w-100 v-md-center px-4 d-flex flex-wrap">
         <div class="col-auto me-auto">
-            @if(isset($columns) && \Orchid\Screen\TD::isShowVisibleColumns($columns))
-                <div class="btn-group dropup d-inline-block">
-                    <button type="button"
-                            class="btn btn-sm btn-link dropdown-toggle p-0 m-0"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            data-bs-boundary="viewport"
-                            aria-expanded="false">
-                        {{ __('Configure columns') }}
-                    </button>
-                    <div class="dropdown-menu dropdown-column-menu dropdown-scrollable">
-                        @foreach($columns as $column)
-                            {!! $column->buildItemMenu() !!}
-                        @endforeach
-                    </div>
-                </div>
-            @endif
-
             @if($paginator instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
                 <small class="text-muted d-block">
                     {{ __('Displayed records: :from-:to of :total',[

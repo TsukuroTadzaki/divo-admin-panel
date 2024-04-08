@@ -40,3 +40,18 @@
     height: 100%;
     justify-content: flex-start;
 }
+.page-item {
+    background-color: #fff !important;
+}
+.page-item.active{
+    background-color: #28a1e740 !important;
+}
+.page-item>.page-link:hover,.page-item>.page-link.active{
+    background-color: #28a1e740 !important;
+    text-decoration: none !important;
+    color: black !important;
+}
+.cross-error{
+    border-radius: 3px;
+    color: red;
+}

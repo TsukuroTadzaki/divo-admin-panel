@@ -10,11 +10,8 @@
                     <x-orchid-icon path="arrow-down" class="small me-2 transition"></x-orchid-icon>
                 </span>
                 @endif
-                <span class="action icon-plus" data-action="click->fields--repeater#addBlockAfter">
-                    <x-orchid-icon path="plus" class="small me-2"></x-orchid-icon>
-                </span>
                 <span class="action" data-action="click->fields--repeater#deleteBlock">
-                    <x-orchid-icon path="minus" class="small me-2"></x-orchid-icon>
+                    <x-orchid-icon path="cross" class="cross-error me-2 "></x-orchid-icon>
                 </span>
                 <span class="badge badge-success small v-top bg-primary text-white pull-right"
                       data-target="fields--repeater.repeaterBlockCount">@{{it.block_count}}</span>

@@ -1,5 +1,10 @@
 <div class="form-group">
     <label class="form-label">{{ $title }}</label>
+    @if(auth()->user()->locale)
+        @php
+        app()->setLocale(auth()->user()->locale);
+        @endphp
+    @endif
     <div>
         <div id="ref_{{ $attributes['id'] }}" class="preview-wrapper" style="display: none;">
             <img src="" alt="">
@@ -11,7 +16,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1em" height="1em" viewBox="0 0 32 32" class="me-2" role="img" fill="currentColor" path="folder-alt" componentname="orchid-icon">
                     <path d="M30.005 6.5h-15l-3-3h-10c-1.105 0-2 0.896-2 2v5h-0.009v2h0.009v14c0 1.105 0.895 2 2 2h28c1.105 0 2-0.895 2-2v-18c0-1.104-0.895-2-2-2zM2.005 5.5h9.086l2.457 2.414 0.629 0.586h15.829v2h-28v-5h-0zM2.005 26.5v-14h28v14h-28z"></path>
                 </svg>
-                <span>{{ __('Choose files...') }}</span>
+                <span>{{ __("Choose files")}}</span>
             </a>
         </div>
         <div id="filepicker_{{ $attributes['id'] }}"></div>

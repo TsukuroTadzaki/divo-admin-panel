@@ -141,12 +141,12 @@ table {
 	background: #f8f9fa !important;
 	color: #16161a !important;
 	tr {
-		&:hover {
-			background: #e4e9ec;
-		}
-		th {
-			padding: 0 !important;
-		}
+		// &:hover {
+		// 	background: #e4e9ec;
+		// }
+		// th {
+		// 	padding: 0 !important;
+		// }
 		td {
 			div {
 				a.btn-link:not(:hover) {
@@ -334,4 +334,7 @@ div.toast-body {
 }
 button {
 	font-size: 15px !important;
+}
+.btn.btn-link {
+	text-decoration: none !important;
 }

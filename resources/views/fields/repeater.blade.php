@@ -12,6 +12,11 @@
          data-fields--repeater-min-error-message="{{ __('The minimum number of blocks was reached.') }}"
          data-fields--repeater-max-error-message="{{ __('The maximum number of blocks was reached.') }}"
     >
+    @if(auth()->user()->locale)
+        @php
+        app()->setLocale(auth()->user()->locale);
+        @endphp
+    @endif
         <input type="hidden" name="{{ $name }}" data-target="fields--repeater.repeaterField" value=""/>
         <div class="row">
             <div class="col-md-12">

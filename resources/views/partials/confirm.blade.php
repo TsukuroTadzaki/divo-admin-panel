@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-link" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">
                     {{__('Cancel')}}
                 </button>
 

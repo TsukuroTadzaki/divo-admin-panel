@@ -76,13 +76,6 @@ $isEmptyNavbarBanner = Dashboard::isEmptyNavbarBanner();
         @endif
 
         <ul class="nav d-md-flex align-items-center justify-content-end">
-            @foreach(app('lang')->getActiveLanguages() as $lang)
-            <li class="d-flex nav-item">
-                <a href="{{ route('platform.localize', ['locale' => $lang->slug]) }}" class="nav-link text-white">
-                    {{ strtoupper($lang->slug) }}
-                </a>
-            </li>
-            @endforeach
             {!! Dashboard::renderNavbar(\Orchid\Platform\Dashboard::MENU_NAVBAR) !!}
         </ul>
     </div>
